@@ -31,10 +31,7 @@ jobs:
     - name: Upload binaries
       uses: actions/upload-artifact@v3
       with:
-        name: binaries
-        path: dist/
-    - name: Upload LICENSE.md
-      uses: actions/upload-artifact@v3
-      with:
-        name: LICENSE
-        path: LICENSE.md
+        name: dist
+        path: |
+          dist/
+          LICENSE.md

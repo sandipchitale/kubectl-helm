@@ -28,13 +28,13 @@ jobs:
     - run: npm run pkg --if-present
     - name: Create windows archive
       id: windows_archive
-      run: /bin/tar -cvzf kubectl-tree_${{ github.ref_name }}_windows_amd64.tar.gz ./dist/win/bin/kubectl-helm.exe ./LICENSE
+      run: /bin/tar --transform 's/.*\///g' -cvzf kubectl-tree_${{ github.ref_name }}_windows_amd64.tar.gz dist/win/bin/kubectl-helm.exe LICENSE
     - name: Create linux archive
       id: linux_archive
-      run: /bin/tar -cvzf kubectl-tree_${{ github.ref_name }}_linux_amd64.tar.gz ./dist/linux/bin/kubectl-helm ./LICENSE
+      run: /bin/tar --transform 's/.*\///g' -cvzf kubectl-tree_${{ github.ref_name }}_linux_amd64.tar.gz dist/linux/bin/kubectl-helm LICENSE
     - name: Create macos archive
       id: macos_archive
-      run: /bin/tar -cvzf kubectl-tree_${{ github.ref_name }}_darwin_amd64.tar.gz ./dist/macos/bin/kubectl-helm ./LICENSE
+      run: /bin/tar --transform 's/.*\///g' -cvzf kubectl-tree_${{ github.ref_name }}_darwin_amd64.tar.gz dist/macos/bin/kubectl-helm LICENSE
     - name: Upload archives
       uses: actions/upload-artifact@v3
       with:

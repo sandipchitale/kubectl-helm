@@ -4,14 +4,9 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -28,3 +23,8 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run pkg --if-present
+    - name: Upload artifacts
+      uses: actions/upload-artifact@3
+      with:
+        name: dist
+        path: archive/

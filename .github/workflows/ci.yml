@@ -38,7 +38,7 @@ jobs:
         outPath: dist/kubectl-tree_${{ github.ref }}_windows_amd64.tar.gz
     - name: Create linux archive
       uses: a7ul/tar-action@v1.1.0
-      id: windows_archive
+      id: linux_archive
       with:
         command: c
         cwd: ./dist/linux/bin
@@ -48,7 +48,7 @@ jobs:
         outPath: dist/kubectl-tree_${{ github.ref }}_linux_amd64.tar.gz
     - name: Create macos archive
       uses: a7ul/tar-action@v1.1.0
-      id: windows_archive
+      id: macos_archive
       with:
         command: c
         cwd: ./dist/macos/bin

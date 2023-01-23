@@ -7,6 +7,7 @@
   "bin": "out/main.js",
   "scripts": {
     "start": "node out/main.js",
+    "start-debug": "node --inspect-brk out/main.js",
     "pkg": "npx tsc && npx pkg -t node16-win .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

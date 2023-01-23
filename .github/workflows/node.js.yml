@@ -30,7 +30,7 @@ jobs:
     - run: npm run pkg --if-present
     - run: npm
     - name: Upload artifacts
-      uses: actions/upload-artifact@3
+      uses: actions/upload-artifact@v3
       with:
         name: archives
         path: archives/

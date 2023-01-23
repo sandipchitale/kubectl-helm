@@ -27,43 +27,14 @@ jobs:
     - run: npm ci
     - run: npm run pkg --if-present
     - name: Create windows archive
-      uses: a7ul/tar-action@v1.1.0
       id: windows_archive
-      with:
-        command: c
-        cwd: ./dist/win/bin
-        files: |
-          ./kubectl-helm.exe
-          ./LICENSE
-        outPath: dist/kubectl-tree_${{ github.ref }}_windows_amd64.tar.gz
-    - name: Create linux archive
-      uses: a7ul/tar-action@v1.1.0
-      id: linux_archive
-      with:
-        command: c
-        cwd: ./dist/linux/bin
-        files: |
-          ./kubectl-helm.exe
-          ./LICENSE
-        outPath: dist/kubectl-tree_${{ github.ref }}_linux_amd64.tar.gz
-    - name: Create macos archive
-      uses: a7ul/tar-action@v1.1.0
-      id: macos_archive
-      with:
-        command: c
-        cwd: ./dist/macos/bin
-        files: |
-          ./kubectl-helm
-          ./LICENSE
-        outPath: dist/kubectl-tree_${{ github.ref }}_darwin_amd64.tar.gz
+      run: /bin/tar -c dist/kubectl-tree_${{ github.ref }}_windows_amd64.tar.gz ./dist/win/bin/kubectl-helm.exe .LICENSE
     - name: Upload archives
       uses: actions/upload-artifact@v3
       with:
         name: archives
         path: |
           dist/kubectl-tree_${{ github.ref }}_windows_amd64.tar.gz
-          dist/kubectl-tree_${{ github.ref }}_linux_amd64.tar.gz
-          dist/kubectl-tree_${{ github.ref }}_darwin_amd64.tar.gz
   release:
     name: Create Release
     needs: build

@@ -8,9 +8,9 @@
   "scripts": {
     "start": "node out/main.js",
     "start-debug": "node --inspect-brk out/main.js",
-    "pkg-win": "npx pkg -t node16-win-x64 --out-path dist/win/bin .  && cp LICENSE dist/win/bin",
-    "pkg-linux": "npx pkg -t node16-linux-x64 --out-path dist/linux/bin . && cp LICENSE dist/linux/bin",
-    "pkg-macos": "npx pkg -t node16-macos-x64 --out-path dist/macos/bin . && cp LICENSE dist/macos/bin",
+    "pkg-win": "npx pkg -t node16-win-x64 --out-path dist/win/bin .",
+    "pkg-linux": "npx pkg -t node16-linux-x64 --out-path dist/linux/bin .",
+    "pkg-macos": "npx pkg -t node16-macos-x64 --out-path dist/macos/bin .",
     "pkg": "npx tsc && npm run pkg-win  && npm run pkg-linux && npm run pkg-macos",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

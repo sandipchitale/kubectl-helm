@@ -1,7 +1,7 @@
 {
   "name": "kubectl-helm",
   "version": "1.0.0",
-  "description": "Kubernetes",
+  "description": "Kubectl plugin to run helm commands including custom commands like get templates RELEASENAME [--revision N]",
   "license": "SEE LICENSE IN LICENCE.md",
   "main": "out/main.js",
   "bin": "out/main.js",
@@ -10,7 +10,6 @@
     "pkg": "npx tsc && npx pkg -t node16-win .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "Sandip Chitale <sandipchitale@gmail.com>",
   "maintainers": [
     "Sandip Chitale <sandipchitale@gmail.com>"
@@ -19,7 +18,12 @@
     "type": "git",
     "url": "https://github.com/sandipchitale/kubectl-helm.git"
   },
-
+  "keywords": [
+    "kubectl",
+    "plugin",
+    "helm",
+    "get templates RELEASENAME [--revision N]"
+  ],
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
     "@types/minimist": "^1.2.2",

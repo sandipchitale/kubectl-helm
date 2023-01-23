@@ -28,9 +28,13 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run pkg --if-present
-    - name: Upload artifacts
+    - name: Upload binaries
       uses: actions/upload-artifact@v3
       with:
-        name: archives
-        path: archives/
-        
+        name: binaries
+        path: dist/
+    - name: Upload LICENSE.md
+      uses: actions/upload-artifact@v3
+      with:
+        name: LICENSE
+        path: LICENSE.md

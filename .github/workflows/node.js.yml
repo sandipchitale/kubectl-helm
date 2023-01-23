@@ -28,7 +28,6 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run pkg --if-present
-    - run: npm
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:

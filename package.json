@@ -1,0 +1,39 @@
+{
+  "name": "kubectl-helm",
+  "version": "1.0.0",
+  "description": "Kubernetes",
+  "license": "SEE LICENSE IN LICENCE.md",
+  "main": "out/main.js",
+  "bin": "out/main.js",
+  "scripts": {
+    "start": "node out/main.js",
+    "pkg": "npx tsc && npx pkg -t node16-win .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sandip Chitale <sandipchitale@gmail.com>",
+  "maintainers": [
+    "Sandip Chitale <sandipchitale@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sandipchitale/kubectl-helm.git"
+  },
+
+  "devDependencies": {
+    "@tsconfig/node18": "^1.0.1",
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^18.11.18",
+    "pkg": "^5.8.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "minimist": "^1.2.7"
+  },
+  "pkg": {
+    "targets": [
+      "node18-win-x64"
+    ],
+    "outputPath": "bin"
+  }
+}

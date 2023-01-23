@@ -28,13 +28,13 @@ jobs:
     - run: npm run pkg --if-present
     - name: Create windows archive
       id: windows_archive
-      run: /bin/tar -cvzf kubectl-tree_${GITHUB_REF_NAME}_windows_amd64.tar.gz ./dist/win/bin/kubectl-helm.exe ./LICENSE
+      run: /bin/tar -cvzf kubectl-tree_${{ GITHUB_REF_NAME }}_windows_amd64.tar.gz ./dist/win/bin/kubectl-helm.exe ./LICENSE
     - name: Upload archives
       uses: actions/upload-artifact@v3
       with:
         name: archives
         path: |
-          kubectl-tree_${GITHUB_REF_NAME}_windows_amd64.tar.gz
+          kubectl-tree_${{ GITHUB_REF_NAME }}_windows_amd64.tar.gz
   release:
     name: Create Release
     needs: build

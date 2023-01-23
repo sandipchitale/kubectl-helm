@@ -28,22 +28,18 @@ jobs:
     - run: npm run pkg --if-present
     - name: Create windows archive
       id: windows_archive
-      run: /bin/tar -czf dist/kubectl-tree_${{ github.ref }}_windows_amd64.tar.gz ./dist/win/bin/kubectl-helm.exe .LICENSE
+      run: /bin/tar -czf kubectl-tree_${{ github.ref.name }}_windows_amd64.tar.gz ./dist/win/bin/kubectl-helm.exe .LICENSE
     - name: Upload archives
       uses: actions/upload-artifact@v3
       with:
         name: archives
         path: |
-          dist/kubectl-tree_${{ github.ref }}_windows_amd64.tar.gz
+          kubectl-tree_${{ github.ref.name }}_windows_amd64.tar.gz
   release:
     name: Create Release
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download binaries and LICENSE zip
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

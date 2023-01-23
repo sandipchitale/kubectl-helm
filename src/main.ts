@@ -19,7 +19,6 @@ import * as child_process from 'child_process';
         const namespace = optsAndCommands.namespace;
 
         const secretName = `sh.helm.release.v1.${releaseName}.v${releaseRevision}`;
-        console.log(secretName);
         try {
             const secretBuffer = child_process.execSync(`kubectl get secret ${secretName} -o go-template="{{.data.release | base64decode }}" ${namespace ? `-n ${namespace}` : ''}`, {
                 encoding: 'utf8'
@@ -38,7 +37,7 @@ import * as child_process from 'child_process';
                             template.data = templateString;
                         });
                         templates = templates.split('\\n').join('\n');
-                        console.log(templates);
+                        console.log(`# Templates for release: ${releaseName} revision: ${releaseRevision} ${namespace ? ` in namespace ${namespace}` : ' in current namespace'}\n${templates}`);
                     } catch (e) {
                     }
                 }

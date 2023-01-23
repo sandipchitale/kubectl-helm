@@ -1,6 +1,6 @@
 {
   "name": "kubectl-helm",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Kubectl plugin to run helm commands including custom commands like get templates RELEASENAME [--revision N]",
   "license": "SEE LICENSE IN LICENCE",
   "main": "out/main.js",

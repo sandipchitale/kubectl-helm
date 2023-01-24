@@ -1,6 +1,6 @@
 {
   "name": "kubectl-helm",
-  "version": "0.0.5",
+  "version": "0.0.26",
   "description": "Kubectl plugin to run helm commands including custom commands like get templates RELEASENAME [--revision N]",
   "license": "SEE LICENSE IN LICENCE",
   "main": "out/main.js",
@@ -11,7 +11,7 @@
     "pkg-win": "npx pkg -t node16-win-x64 --out-path dist/win/bin .",
     "pkg-linux": "npx pkg -t node16-linux-x64 --out-path dist/linux/bin .",
     "pkg-macos": "npx pkg -t node16-macos-x64 --out-path dist/macos/bin .",
-    "pkg": "npx tsc && npm run pkg-win  && npm run pkg-linux && npm run pkg-macos",
+    "pkg": "npx tsc && npm run pkg-win && npm run pkg-linux && npm run pkg-macos",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sandip Chitale <sandipchitale@gmail.com>",

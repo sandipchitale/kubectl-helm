@@ -28,28 +28,28 @@ jobs:
     - run: npm run pkg --if-present
     - name: Create windows archive
       id: windows_archive
-      run: /bin/tar --transform 's/.*\///g' -cvzf kubectl-tree_${{ github.ref_name }}_windows_amd64.tar.gz dist/win/bin/kubectl-helm.exe LICENSE
+      run: /bin/tar --transform 's/.*\///g' -cvzf kubectl-helm_${{ github.ref_name }}_windows_amd64.tar.gz dist/win/bin/kubectl-helm.exe LICENSE
     - name: Create linux archive
       id: linux_archive
-      run: /bin/tar --transform 's/.*\///g' -cvzf kubectl-tree_${{ github.ref_name }}_linux_amd64.tar.gz dist/linux/bin/kubectl-helm LICENSE
+      run: /bin/tar --transform 's/.*\///g' -cvzf kubectl-helm_${{ github.ref_name }}_linux_amd64.tar.gz dist/linux/bin/kubectl-helm LICENSE
     - name: Create macos archive
       id: macos_archive
-      run: /bin/tar --transform 's/.*\///g' -cvzf kubectl-tree_${{ github.ref_name }}_darwin_amd64.tar.gz dist/macos/bin/kubectl-helm LICENSE
+      run: /bin/tar --transform 's/.*\///g' -cvzf kubectl-helm_${{ github.ref_name }}_darwin_amd64.tar.gz dist/macos/bin/kubectl-helm LICENSE
     - name: Upload windows archives
       uses: actions/upload-artifact@v3
       with:
-        name: kubectl-tree_${{ github.ref_name }}_windows_amd64.tar.gz
-        path: kubectl-tree_${{ github.ref_name }}_windows_amd64.tar.gz
+        name: kubectl-helm_${{ github.ref_name }}_windows_amd64.tar.gz
+        path: kubectl-helm_${{ github.ref_name }}_windows_amd64.tar.gz
     - name: Upload linux archives
       uses: actions/upload-artifact@v3
       with:
-        name: kubectl-tree_${{ github.ref_name }}_linux_amd64.tar.gz
-        path: kubectl-tree_${{ github.ref_name }}_linux_amd64.tar.gz
+        name: kubectl-helm_${{ github.ref_name }}_linux_amd64.tar.gz
+        path: kubectl-helm_${{ github.ref_name }}_linux_amd64.tar.gz
     - name: Upload macos archives
       uses: actions/upload-artifact@v3
       with:
-        name: kubectl-tree_${{ github.ref_name }}_darwin_amd64.tar.gz
-        path: kubectl-tree_${{ github.ref_name }}_darwin_amd64.tar.gz
+        name: kubectl-helm_${{ github.ref_name }}_darwin_amd64.tar.gz
+        path: kubectl-helm_${{ github.ref_name }}_darwin_amd64.tar.gz
   release:
     name: Create Release
     needs: build
@@ -57,24 +57,21 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: kubectl-tree_${{ github.ref_name }}_windows_amd64.tar.gz
-          path: kubectl-tree_${{ github.ref_name }}_windows_amd64.tar.gz
+          name: kubectl-helm_${{ github.ref_name }}_windows_amd64.tar.gz
       - uses: actions/download-artifact@v3
         with:
-          name: kubectl-tree_${{ github.ref_name }}_linux_amd64.tar.gz
-          path: kubectl-tree_${{ github.ref_name }}_linux_amd64.tar.gz
+          name: kubectl-helm_${{ github.ref_name }}_linux_amd64.tar.gz
       - uses: actions/download-artifact@v3
         with:
-          name: kubectl-tree_${{ github.ref_name }}_darwin_amd64.tar.gz
-          path: kubectl-tree_${{ github.ref_name }}_darwin_amd64.tar.gz
+          name: kubectl-helm_${{ github.ref_name }}_darwin_amd64.tar.gz
       - name: Create Release
         id: release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            kubectl-tree_${{ github.ref_name }}_windows_amd64.tar.gz
-            kubectl-tree_${{ github.ref_name }}_linux_amd64.tar.gz
-            kubectl-tree_${{ github.ref_name }}_darwin_amd64.tar.gz
+            kubectl-helm_${{ github.ref_name }}_windows_amd64.tar.gz
+            kubectl-helm_${{ github.ref_name }}_linux_amd64.tar.gz
+            kubectl-helm_${{ github.ref_name }}_darwin_amd64.tar.gz
 
 

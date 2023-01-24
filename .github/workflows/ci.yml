@@ -57,8 +57,16 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: archives
-          path: path/to/artifact
+          name: kubectl-tree_${{ github.ref_name }}_windows_amd64.tar.gz
+          path: kubectl-tree_${{ github.ref_name }}_windows_amd64.tar.gz
+      - uses: actions/download-artifact@v3
+        with:
+          name: kubectl-tree_${{ github.ref_name }}_linux_amd64.tar.gz
+          path: kubectl-tree_${{ github.ref_name }}_linux_amd64.tar.gz
+      - uses: actions/download-artifact@v3
+        with:
+          name: kubectl-tree_${{ github.ref_name }}_darwin_amd64.tar.gz
+          path: kubectl-tree_${{ github.ref_name }}_darwin_amd64.tar.gz
       - name: Create Release
         id: release
         uses: softprops/action-gh-release@v1
